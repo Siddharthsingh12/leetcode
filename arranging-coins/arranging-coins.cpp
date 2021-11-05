@@ -1,15 +1,14 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        long long i=0,j=n;
-        long long mid,steps;
-        while(i<=j){
-            mid=i+(j-i)/2;
-            steps=(mid*(mid+1))/2;
+        long long low=0,high=n,steps,mid;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            steps=mid*(mid+1)/2;
             if(steps==n) return (int)mid;
-            if(steps<n) i=mid+1;
-            else j=mid-1;
+            if(steps<n) low=mid+1;
+            else high=mid-1;
         }
-        return (int)j;
+        return (int)high;
     }
 };
